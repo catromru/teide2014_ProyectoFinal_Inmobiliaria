@@ -23,7 +23,7 @@ class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 p:location="/WEB-INF/jdbc.properties" />
 -->
     
-<context:component-scan base-package="com.nebur.teide" />
+<context:component-scan base-package="com.nebur.teide.tienda" />
                       
 
 <!-- Root Context: defines shared resources visible to all other web components -->
@@ -62,5 +62,11 @@ p:location="/WEB-INF/jdbc.properties" />
  
  <tx:annotation-driven transaction-manager="txManager"
                        proxy-target-class="true"/>
+ 
+ 
+ 
+ <bean id="daoProducto" class="com.nebur.teide.inmobiliaria.repositorios.RepositorioInquilinos">
+     <property name="sessionFactory" ref="sessionFactory" />
+ </bean>
     
 </beans>

@@ -10,5 +10,8 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<br/>
+<a href="inquilino/listado.html">Inquilinos</a>
 </body>
 </html>

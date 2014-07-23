@@ -10,17 +10,18 @@ import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class Repositorio<T> implements IRepositorio<T> {
+public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<T> {
 	Session sesion = null;
 
 	@Override
 	public void comprobarSesion() {
 		if( sesion==null || !sesion.isOpen() )
 		{
-			sesion = sesion.getSessionFactory().getCurrentSession();
+			sesion = getSessionFactory().getCurrentSession();
 		}
 	}
 
