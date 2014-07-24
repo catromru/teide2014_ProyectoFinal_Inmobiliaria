@@ -27,8 +27,8 @@ import org.hibernate.annotations.NamedQuery;
     ,catalog="teide2014"
 )
 @NamedQueries({
-	@NamedQuery(name="buscarPor_nombre", query="from Inquilino i where i.nombre like :param"),
-	@NamedQuery(name="buscarPor_edad", query="from Inquilino i where i.edad = :param")
+	@NamedQuery(name="inquilino_buscarPor_nombre", query="from Inquilino i where i.nombre like :param"),
+	@NamedQuery(name="inquilino_buscarPor_edad", query="from Inquilino i where i.edad = :param")
 })
 public class Inquilino  implements java.io.Serializable {
 

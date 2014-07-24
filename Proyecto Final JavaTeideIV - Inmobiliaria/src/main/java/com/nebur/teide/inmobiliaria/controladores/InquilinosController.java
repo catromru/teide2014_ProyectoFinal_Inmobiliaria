@@ -64,7 +64,7 @@ public class InquilinosController {
 		
 		parametros.put("param", texto);
 		
-		return daoInq.getByConsulta("buscarPor_" + campo, parametros);
+		return daoInq.getByConsulta("inquilino_buscarPor_" + campo, parametros);
 	}
 	
 	

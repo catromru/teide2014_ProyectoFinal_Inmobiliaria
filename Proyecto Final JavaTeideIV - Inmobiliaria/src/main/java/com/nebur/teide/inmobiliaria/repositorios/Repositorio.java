@@ -31,6 +31,7 @@ public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<
 		
 		Query consulta = sesion.createQuery( "from " + tipoDato.getName() );
 		
+		@SuppressWarnings("unchecked")
 		List<T> lista = consulta.list();
 		
 		
@@ -41,6 +42,7 @@ public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<
 	public T get(Class<T> tipoDato, Integer id) {
 		comprobarSesion();
 		
+		@SuppressWarnings("unchecked")
 		T obj = (T) sesion.get(tipoDato, id);
 		
 		
@@ -79,6 +81,7 @@ public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<
 			consulta.setParameter( param, parametros.get(param) );
 		}
 		
+		@SuppressWarnings("unchecked")
 		List<T> lista = consulta.list();
 		
 		

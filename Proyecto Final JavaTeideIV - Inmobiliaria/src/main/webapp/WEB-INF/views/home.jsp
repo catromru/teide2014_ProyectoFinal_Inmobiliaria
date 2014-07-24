@@ -12,6 +12,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <br/>
-<a href="inquilino/listado.html">Inquilinos</a>
+<a href="inquilino/listado.html">Inquilinos</a> 
+<a href="propietario/listado.html">Propietarios</a>
 </body>
 </html>

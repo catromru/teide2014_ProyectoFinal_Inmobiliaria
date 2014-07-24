@@ -65,7 +65,11 @@ p:location="/WEB-INF/jdbc.properties" />
  
  
  
- <bean id="daoProducto" class="com.nebur.teide.inmobiliaria.repositorios.RepositorioInquilinos">
+ <bean id="daoInquilinos" class="com.nebur.teide.inmobiliaria.repositorios.RepositorioInquilinos">
+     <property name="sessionFactory" ref="sessionFactory" />
+ </bean>
+ 
+ <bean id="daoPropietarios" class="com.nebur.teide.inmobiliaria.repositorios.RepositorioPropietarios">
      <property name="sessionFactory" ref="sessionFactory" />
  </bean>
     
