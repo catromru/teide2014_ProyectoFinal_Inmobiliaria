@@ -1,6 +1,6 @@
 <!-- Autor: Rubén Alejandro Catalán Romero
 	 Fecha creación: 23/07/2014
-	 Última modificación: 23/07/2014
+	 Última modificación: 24/07/2014
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,6 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="alta.html">Alta nuevo inquilino</a> <br/><br/>
+	
+	Búsqueda: <input type="text" id="txtBuscar">
+	<select>
+		<option onclick='buscar("nombre", "NaN")'>Por nombre</option>
+		<option onclick='buscar("edad", "N")'>Por edad</option>
+	</select> <br/><br/><br/>
+
 	<table id="tablaDatos"></table>
 	
 	<div id="divDetalle"></div>
@@ -23,30 +31,49 @@
 	(function(){
 		listar();
 	})();
-
+	
 	function listar()
 	{
 		var url = "listar";
+
+		$.get(url, mostrarRegistros);
+	}
+
+	function buscar(campo, tipoDato)
+	{
+		var texto = $("#txtBuscar").val();
+		
+		if( texto=="" )
+		{
+			listar();
+			return;
+		}
+		
+		var url = "buscar_" + campo + "_" + tipoDato + "_" + texto;
+
+		$.get(url, mostrarRegistros);
+	}
+	
+	function mostrarRegistros(res){
 		var tabla = $("#tablaDatos");
-
-		$.get(url, function(res){
-			$("#tablaDatos tr").each(function(){
-				$(this).remove();
-			});
-
-			tabla.append("<tr><th>Nombre</th><th>Edad</th><th>Opciones</th></tr>");
-
-			for ( var i in res) {
-				var resultado = "<tr>";
-				resultado += "<td>" + res[i].nombre + "</td>";
-				resultado += "<td>" + res[i].edad + "</td>";
-				resultado += "<td><a href='#' onclick='verDetalle(" + res[i].idInquilino + ")'>Ver detalle</a></td>";
-				resultado += "<td><a href='#' onclick='borrar(" + res[i].idInquilino + ")'>Borrar</a></td>";
-				resultado += "</tr>";
-
-				tabla.append(resultado);
-			}
+		
+		$("#tablaDatos tr").each(function(){
+			$(this).remove();
 		});
+
+		tabla.append("<tr><th>Nombre</th><th>Edad</th><th colspan=3>Opciones</th></tr>");
+
+		for ( var i in res) {
+			var resultado = "<tr>";
+			resultado += "<td>" + res[i].nombre + "</td>";
+			resultado += "<td>" + res[i].edad + "</td>";
+			resultado += "<td><a href='#' onclick='verDetalle(" + res[i].idInquilino + ")'>Ver detalle</a></td>";
+			resultado += "<td><a href='#' onclick='borrar(" + res[i].idInquilino + ")'>Borrar</a></td>";
+			resultado += "<td><a href='modificacion_" + res[i].idInquilino + ".html?'>Modificar</a></td>";
+			resultado += "</tr>";
+
+			tabla.append(resultado);
+		}
 	}
 
 	function verDetalle(id)
