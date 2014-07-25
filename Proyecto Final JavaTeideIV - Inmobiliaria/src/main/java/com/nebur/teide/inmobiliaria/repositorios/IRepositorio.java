@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 23/07/2014
-   Última modificación: 23/07/2014
+   Última modificación: 25/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.repositorios;
@@ -16,4 +16,5 @@ public interface IRepositorio<T> {
 	public void update(T objeto);
 	public void delete(T objeto);
 	public List<T> getByConsulta(String q, Map<String, Object> parametros);
+	public Object hacerConsulta(String q);
 }

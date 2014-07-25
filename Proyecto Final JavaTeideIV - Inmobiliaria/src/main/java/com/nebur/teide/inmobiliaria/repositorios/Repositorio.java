@@ -87,6 +87,19 @@ public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<
 		
 		return lista;
 	}
+
+	@Override
+	public Object hacerConsulta(String q) {
+		comprobarSesion();
+		
+		Query consulta = sesion.getNamedQuery(q);
+		
+		@SuppressWarnings("unchecked")
+		List<Object> lista = consulta.list();
+		
+		
+		return lista.get(0);
+	}
 	
 	
 }
