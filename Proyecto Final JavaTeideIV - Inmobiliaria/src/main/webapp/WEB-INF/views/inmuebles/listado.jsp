@@ -86,11 +86,21 @@
 			var resultado = "<ul>";
 			resultado += "<li>Dirección: " + res.direccion + "</li>";
 			resultado += "<li>Precio: " + res.precio + "</li>";
-			resultado += "<li>Propietario: " + res.propietario.nombre + "</li>";
+			resultado += "<li>Propietario:<ul>";
+				resultado += "<li>Nombre: " + res.propietario.nombre + "</li>";
+				resultado += "<li>DNI: " + res.propietario.dni + "</li>";
+				resultado += "</ul></li>";
 			resultado += "<li>Inquilino: ";
 				if( res.inquilino!=null )
 				{
-					resultado += res.inquilino.nombre + "</li>";
+					resultado += "<ul>";
+					resultado += "<li>Nombre: " + res.inquilino.nombre + "</li>";
+					resultado += "<li>DNI: " + res.inquilino.dni + "</li>";
+					resultado += "<li>Edad: " + res.inquilino.edad + "</li>";
+					resultado += "<li>Trabaja: ";
+						if(res.inquilino.trabaja==1){resultado+="Si";}else{resultado+="No";}
+						resultado += "</li>";
+					resultado += "</ul></li>";
 				}else{
 						resultado += "ninguno</li>";
 					 }
