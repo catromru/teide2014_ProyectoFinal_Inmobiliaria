@@ -14,5 +14,6 @@
 <br/>
 <a href="inquilino/listado.html">Inquilinos</a> 
 <a href="propietario/listado.html">Propietarios</a>
+<a href="inmueble/listado.html">Inmuebles</a>
 </body>
 </html>

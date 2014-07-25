@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 24/07/2014
-   Última modificación: 24/07/2014
+   Última modificación: 25/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.controladores;
@@ -52,7 +52,12 @@ public class PropietariosController {
 		{
 			texto = "%" + texto + "%";
 		}else {
-				texto = Integer.parseInt((String) texto);
+				if( texto instanceof Integer )
+				{
+					texto = Integer.parseInt((String) texto);
+				}else {
+						texto = Double.parseDouble((String) texto);
+					  }
 			}
 		
 		parametros.put("param", texto);
