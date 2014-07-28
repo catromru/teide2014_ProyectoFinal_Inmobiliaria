@@ -1,6 +1,6 @@
 <!-- Autor: Rubén Alejandro Catalán Romero
 	 Fecha creación: 23/07/2014
-	 Última modificación: 24/07/2014
+	 Última modificación: 28/07/2014
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -29,35 +29,19 @@
 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
+<script type="text/javascript" src='<c:url value="/resources/js/funcionesComunes.js" />'></script>
+
 <script type="text/javascript">
 	(function(){
 		listar();
 	})();
 	
-	function listar()
-	{
-		var url = "listar";
-
-		$.get(url, mostrarRegistros);
-	}
-
-	function buscar(campo, tipoDato)
-	{
-		var texto = $("#txtBuscar").val();
-		
-		if( texto=="" )
-		{
-			listar();
-			return;
-		}
-		
-		var url = "buscar_" + campo + "_" + tipoDato + "_" + texto;
-
-		$.get(url, mostrarRegistros);
-	}
-	
 	function mostrarRegistros(res){
 		var tabla = $("#tablaDatos");
+		
+		$("#divDetalle ul").each(function(){
+			$(this).remove();
+		});
 		
 		$("#tablaDatos tr").each(function(){
 			$(this).remove();

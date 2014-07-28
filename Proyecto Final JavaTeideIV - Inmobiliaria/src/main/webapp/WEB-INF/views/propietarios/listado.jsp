@@ -29,32 +29,12 @@
 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
+<script type="text/javascript" src='<c:url value="/resources/js/funcionesComunes.js" />'></script>
+
 <script type="text/javascript">
 	(function(){
 		listar();
 	})();
-	
-	function listar()
-	{
-		var url = "listar";
-
-		$.get(url, mostrarRegistros);
-	}
-
-	function buscar(campo, tipoDato)
-	{
-		var texto = $("#txtBuscar").val();
-		
-		if( texto=="" )
-		{
-			listar();
-			return;
-		}
-		
-		var url = "buscar_" + campo + "_" + tipoDato + "_" + texto;
-
-		$.get(url, mostrarRegistros);
-	}
 	
 	function mostrarRegistros(res){
 		var tabla = $("#tablaDatos");

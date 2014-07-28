@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nebur.teide.inmobiliaria.modelo.BusquedaJSON;
 import com.nebur.teide.inmobiliaria.modelo.Propietario;
 import com.nebur.teide.inmobiliaria.repositorios.RepositorioPropietarios;
-import com.nebur.teide.inmobiliaria.utilidades.Utilidades;
 
 @Controller
 @RequestMapping(value="/propietario/")
@@ -44,16 +44,15 @@ public class PropietariosController {
 	
 	
 	/* Búsqueda */
-	@RequestMapping(value="buscar_{campo}_{tipoDato}_{texto}")
-	public @ResponseBody List<Propietario> buscar(@PathVariable String campo, @PathVariable String tipoDato, @PathVariable Object texto) {
-		//System.out.println("**********" + campo + "**********" + texto + "**********");
+	@RequestMapping(value="buscar")
+	public @ResponseBody List<Propietario> buscarConDecimales(@RequestBody BusquedaJSON valoresJSON) {
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		
-		texto = Utilidades.getCadenaSegunTipo(tipoDato, texto);
+		valoresJSON.getCadenaSegunTipo();
 		
-		parametros.put("param", texto);
+		parametros.put("param", valoresJSON.getTexto());
 		
-		return daoProp.getByConsulta("propietario_buscarPor_" + campo, parametros);
+		return daoProp.getByConsulta("propietario_buscarPor_" + valoresJSON.getCampo(), parametros);
 	}
 	
 	

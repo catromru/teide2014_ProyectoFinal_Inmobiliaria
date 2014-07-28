@@ -29,7 +29,7 @@ CREATE TABLE `propietario` (
   `nombre` varchar(45) NOT NULL,
   `dni` varchar(45) NOT NULL,
   PRIMARY KEY (`idPropietario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `propietario` (
 
 LOCK TABLES `propietario` WRITE;
 /*!40000 ALTER TABLE `propietario` DISABLE KEYS */;
-INSERT INTO `propietario` VALUES (1,'Genji','73423097G'),(2,'To no Chujo','81234078T'),(3,'Murasaki','37801583M'),(4,'Hachi','48484884I'),(5,'Fujitsubo','23200673B');
+INSERT INTO `propietario` VALUES (1,'Genji','73423097G'),(2,'To no Chujo','81234078T'),(3,'Murasaki','37801583M'),(4,'Hachi','48484884I'),(5,'Fujitsubo','23200673B'),(6,'Prueba Alta Propietarios','99999999Z'),(8,'Prueba CASCADE','');
 /*!40000 ALTER TABLE `propietario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ CREATE TABLE `inquilino` (
   `edad` int(11) NOT NULL,
   `trabaja` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`idInquilino`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `inquilino` (
 
 LOCK TABLES `inquilino` WRITE;
 /*!40000 ALTER TABLE `inquilino` DISABLE KEYS */;
-INSERT INTO `inquilino` VALUES (1,'01234567A','Hanachirusato',37,''),(2,'98765432Z','Suetsumuhana',33,'\0'),(3,'19283747E','Tamakazura',24,''),(4,'81726354H','Kaoru',25,''),(5,'51928375F','Niou',25,'\0');
+INSERT INTO `inquilino` VALUES (1,'01234567A','Hanachirusato',37,''),(2,'98765432Z','Suetsumuhana',33,'\0'),(3,'19283747E','Tamakazura',24,''),(4,'81726354H','Kaoru',25,''),(5,'51928375F','Niou',25,'\0'),(6,'00000000A','Prueba Alta',0,'\0'),(7,'11111111B','Prueba Alta 2',1,'');
 /*!40000 ALTER TABLE `inquilino` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,9 +85,9 @@ CREATE TABLE `inmueble` (
   PRIMARY KEY (`idInmueble`),
   KEY `inmueble_idPropietario_idx` (`idPropietario`),
   KEY `fk_inmueble_idInquilino_idx` (`idInquilino`),
-  CONSTRAINT `fk_inmueble_idPropietario` FOREIGN KEY (`idPropietario`) REFERENCES `propietario` (`idPropietario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_inmueble_idInquilino` FOREIGN KEY (`idInquilino`) REFERENCES `inquilino` (`idInquilino`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_inmueble_idInquilino` FOREIGN KEY (`idInquilino`) REFERENCES `inquilino` (`idInquilino`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_inmueble_idPropietario` FOREIGN KEY (`idPropietario`) REFERENCES `propietario` (`idPropietario`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `inmueble` (
 
 LOCK TABLES `inmueble` WRITE;
 /*!40000 ALTER TABLE `inmueble` DISABLE KEYS */;
-INSERT INTO `inmueble` VALUES (1,'Sexta Avenida 4',2500000,1,1),(2,'Tercera Avenida 23',1750600,1,2),(3,'Cuarta Avenida 6',500250,2,NULL),(4,'Oto 2',200000,4,4),(5,'Avenida Central',10500700,5,NULL);
+INSERT INTO `inmueble` VALUES (1,'Sexta Avenida 4',2500000,1,1),(2,'Tercera Avenida 23',1750600,1,2),(3,'Cuarta Avenida 6',500250,2,NULL),(4,'Oto 2',200000,4,4),(5,'Avenida Central',10500700,5,NULL),(7,'Prueba Modificacion',150.23,6,7);
 /*!40000 ALTER TABLE `inmueble` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-23 15:54:30
+-- Dump completed on 2014-07-28 17:43:47
