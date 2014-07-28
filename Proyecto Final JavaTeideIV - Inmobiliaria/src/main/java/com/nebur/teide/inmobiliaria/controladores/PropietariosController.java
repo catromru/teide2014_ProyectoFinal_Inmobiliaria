@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 24/07/2014
-   Última modificación: 25/07/2014
+   Última modificación: 28/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.controladores;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nebur.teide.inmobiliaria.modelo.Propietario;
 import com.nebur.teide.inmobiliaria.repositorios.RepositorioPropietarios;
+import com.nebur.teide.inmobiliaria.utilidades.Utilidades;
 
 @Controller
 @RequestMapping(value="/propietario/")
@@ -48,17 +49,7 @@ public class PropietariosController {
 		//System.out.println("**********" + campo + "**********" + texto + "**********");
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		
-		if( tipoDato.equals("NaN") )
-		{
-			texto = "%" + texto + "%";
-		}else {
-				if( texto instanceof Integer )
-				{
-					texto = Integer.parseInt((String) texto);
-				}else {
-						texto = Double.parseDouble((String) texto);
-					  }
-			}
+		texto = Utilidades.getCadenaSegunTipo(tipoDato, texto);
 		
 		parametros.put("param", texto);
 		

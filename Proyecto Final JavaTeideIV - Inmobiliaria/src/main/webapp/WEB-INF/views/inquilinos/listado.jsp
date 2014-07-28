@@ -19,7 +19,7 @@
 	Búsqueda: <input type="text" id="txtBuscar">
 	<select>
 		<option onclick='buscar("nombre", "NaN")'>Por nombre</option>
-		<option onclick='buscar("edad", "N")'>Por edad</option>
+		<option onclick='buscar("edad", "int")'>Por edad</option>
 	</select> <br/><br/><br/>
 
 	<table id="tablaDatos"></table>

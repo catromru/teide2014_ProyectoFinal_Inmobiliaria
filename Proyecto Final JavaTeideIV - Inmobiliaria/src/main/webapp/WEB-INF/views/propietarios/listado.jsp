@@ -12,6 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="../"><img alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
+
 	<a href="alta.html">Alta nuevo propietario</a> <br/><br/>
 	
 	Búsqueda: <input type="text" id="txtBuscar">

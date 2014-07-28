@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 23/07/2014
-   Última modificación: 23/07/2014
+   Última modificación: 28/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.repositorios;
@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,6 +94,19 @@ public class Repositorio<T> extends HibernateDaoSupport implements IRepositorio<
 		comprobarSesion();
 		
 		Query consulta = sesion.getNamedQuery(q);
+		
+		@SuppressWarnings("unchecked")
+		List<Object> lista = consulta.list();
+		
+		
+		return lista.get(0);
+	}
+
+	@Override
+	public Object hacerConsultaSQL(String q) {
+		comprobarSesion();
+		
+		SQLQuery consulta = sesion.createSQLQuery(q);
 		
 		@SuppressWarnings("unchecked")
 		List<Object> lista = consulta.list();

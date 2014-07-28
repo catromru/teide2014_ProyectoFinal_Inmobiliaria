@@ -28,10 +28,7 @@ import org.hibernate.annotations.NamedQuery;
 	@NamedQuery(name="inmueble_buscarPor_direccion", query="from Inmueble i where i.direccion like :param"),
 	@NamedQuery(name="inmueble_buscarPor_precio", query="from Inmueble i where i.precio = :param"),
 	@NamedQuery(name="inmueble_precioMedio", query="select avg(precio) from Inmueble i"),
-	@NamedQuery(name="inmueble_precioMax", query="select max(precio) from Inmueble i"),
-	//@NamedQuery(name="inmueble_propietarioConMasInmuebles", query="select idPropietario from Inmueble i")
-	@NamedQuery(name="inmueble_propietarioConMasGanancias", query="from Inmueble i GROUP BY i.idPropietario ORDER BY sum(i.precio) desc")
-	//@NamedQuery(name="inmueble_propietarioConMasGanancias", query="from Inmueble")
+	@NamedQuery(name="inmueble_precioMax", query="select max(precio) from Inmueble i")
 })
 public class Inmueble  implements java.io.Serializable {
 

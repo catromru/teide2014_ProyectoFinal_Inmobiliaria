@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 25/07/2014
-   Última modificación: 25/07/2014
+   Última modificación: 28/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.controladores;
@@ -27,6 +27,7 @@ import com.nebur.teide.inmobiliaria.modelo.viewforms.InmuebleViewForm;
 import com.nebur.teide.inmobiliaria.repositorios.RepositorioInmuebles;
 import com.nebur.teide.inmobiliaria.repositorios.RepositorioInquilinos;
 import com.nebur.teide.inmobiliaria.repositorios.RepositorioPropietarios;
+import com.nebur.teide.inmobiliaria.utilidades.Utilidades;
 
 @Controller
 @RequestMapping(value="/inmueble/")
@@ -64,17 +65,7 @@ public class InmueblesController {
 		//System.out.println("**********" + campo + "**********" + texto + "**********");
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		
-		if( tipoDato.equals("NaN") )
-		{
-			texto = "%" + texto + "%";
-		}else {
-				if( texto instanceof Integer )
-				{
-					texto = Integer.parseInt((String) texto);
-				}else {
-						texto = Double.parseDouble((String) texto);
-					  }
-			}
+		texto = Utilidades.getCadenaSegunTipo(tipoDato, texto);
 		
 		parametros.put("param", texto);
 		

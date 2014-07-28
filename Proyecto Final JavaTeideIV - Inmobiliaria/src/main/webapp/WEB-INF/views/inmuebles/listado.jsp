@@ -19,7 +19,7 @@
 	Búsqueda: <input type="text" id="txtBuscar">
 	<select>
 		<option onclick='buscar("direccion", "NaN")'>Por dirección</option>
-		<option onclick='buscar("precio", "N")'>Por precio</option>
+		<option onclick='buscar("precio", "dbl")'>Por precio</option>
 	</select> <br/><br/><br/>
 
 	<table id="tablaDatos"></table>
