@@ -3,13 +3,15 @@
 <html>
 <head>
 	<title>Home</title>
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estilos.css" />" />
 </head>
 <body>
 <h1>
-	Hello world!  
+	¡Hola, mundo!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  El tiempo en el servidor es ${serverTime}. </P>
 
 <br/>
 <a href="inquilino/listado.html">Inquilinos</a> 

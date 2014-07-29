@@ -1,0 +1,17 @@
+/* Autor: Rubén Alejandro Catalán Romero
+   Fecha creación: 29/07/2014
+   Última modificación: 29/07/2014
+*/
+
+body{
+	background-image:url('../img/bg-texture.jpg');
+}
+
+#ulCargando{
+	list-style-type:none;
+}
+
+#botonVolver{
+	width: 30px;
+	height: 30px;
+}

@@ -1,6 +1,6 @@
 <!-- Autor: Rubén Alejandro Catalán Romero
 	 Fecha creación: 25/07/2014
-	 Última modificación: 28/07/2014
+	 Última modificación: 29/07/2014
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -9,10 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Listado inmuebles</title>
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estilos.css" />" />
+	
 </head>
 <body>
-	<a href="../"><img alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
+	<a href="../"><img id="botonVolver" alt="Volver" src='<c:url value="/resources/img/home.png" />' /></a> <br/><br/>
 
 	<a href="alta.html">Alta nuevo inmueble</a> <br/><br/>
 	
@@ -20,11 +23,16 @@
 	<select>
 		<option onclick='buscar("direccion", "NaN")'>Por dirección</option>
 		<option onclick='buscar("precio", "dbl")'>Por precio</option>
+		<option onclick="listar()">Ver todos los registros</option>
 	</select> <br/><br/><br/>
 
 	<table id="tablaDatos"></table>
 	
-	<div id="divDetalle"></div>
+	<div id="divDetalle">
+		<ul id="ulCargando">
+			<li>Cargando...</li>
+		</ul>
+	</div>
 </body>
 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>

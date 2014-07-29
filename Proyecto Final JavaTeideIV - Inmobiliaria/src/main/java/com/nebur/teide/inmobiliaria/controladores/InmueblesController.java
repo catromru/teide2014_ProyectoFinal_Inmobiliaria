@@ -128,6 +128,7 @@ public class InmueblesController {
 		
 		Map<Integer, String> mapaPropietarios = daoPro.getMapaOptions();
 		Map<Integer, String> mapaInquilinos = daoInq.getMapaOptions();
+//mapaInquilinos.put(null, null);
 		
 		mapaModelo.addAttribute("inmueble", ivf);
 		mapaModelo.addAttribute("propietarios", mapaPropietarios);

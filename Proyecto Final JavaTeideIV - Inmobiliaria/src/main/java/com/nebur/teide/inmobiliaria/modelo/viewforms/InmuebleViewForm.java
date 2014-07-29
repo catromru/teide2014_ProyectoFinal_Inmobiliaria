@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 25/07/2014
-   Última modificación: 25/07/2014
+   Última modificación: 29/07/2014
 */
 
 package com.nebur.teide.inmobiliaria.modelo.viewforms;
@@ -54,18 +54,12 @@ public class InmuebleViewForm {
 	public void setIdInquilino(Integer idInquilino) {
 		this.idInquilino = idInquilino;
 	}
-	/*public void setIdInquilino(Inquilino i) {
-		this.idInquilino = i.getIdInquilino();
-	}*/
 	public Integer getIdPropietario() {
 		return idPropietario;
 	}
 	public void setIdPropietario(Integer idPropietario) {
 		this.idPropietario = idPropietario;
 	}
-	/*public void setIdPropietario(Propietario p) {
-		this.idPropietario = p.getIdPropietario();
-	}*/
     
 	
 	public Inmueble getInmueble() {
@@ -79,9 +73,15 @@ public class InmuebleViewForm {
 		propietario.setIdPropietario(idPropietario);
 		i.setPropietario(propietario);
 		
-		Inquilino inquilino = new Inquilino();
-		inquilino.setIdInquilino(idInquilino);
-		i.setInquilino(inquilino);
+		if( idInquilino!=null )
+		{
+			Inquilino inquilino = new Inquilino();
+			inquilino.setIdInquilino(idInquilino);
+			i.setInquilino(inquilino);	
+		}else {
+				i.setInquilino(null);
+			  }
+		
 		
 		
 		return i;

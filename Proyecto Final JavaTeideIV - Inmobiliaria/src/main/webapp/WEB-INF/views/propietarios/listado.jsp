@@ -1,6 +1,6 @@
 <!-- Autor: Rubén Alejandro Catalán Romero
 	 Fecha creación: 24/07/2014
-	 Última modificación: 24/07/2014
+	 Última modificación: 29/07/2014
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -9,10 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Listado propietarios</title>
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estilos.css" />" />
+	
 </head>
 <body>
-	<a href="../"><img alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
+	<a href="../"><img id="botonVolver" alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
 
 	<a href="alta.html">Alta nuevo propietario</a> <br/><br/>
 	
@@ -20,11 +23,16 @@
 	<select>
 		<option onclick='buscar("nombre", "NaN")'>Por nombre</option>
 		<option onclick='buscar("dni", "NaN")'>Por DNI</option>
+		<option onclick="listar()">Ver todos los registros</option>
 	</select> <br/><br/><br/>
 
 	<table id="tablaDatos"></table>
 	
-	<div id="divDetalle"></div>
+	<div id="divDetalle">
+		<ul id="ulCargando">
+			<li>Cargando...</li>
+		</ul>
+	</div>
 </body>
 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
@@ -38,6 +46,10 @@
 	
 	function mostrarRegistros(res){
 		var tabla = $("#tablaDatos");
+		
+		$("#divDetalle ul").each(function(){
+			$(this).remove();
+		});
 		
 		$("#tablaDatos tr").each(function(){
 			$(this).remove();

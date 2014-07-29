@@ -1,6 +1,6 @@
 <!-- Autor: Rubén Alejandro Catalán Romero
 	 Fecha creación: 25/07/2014
-	 Última modificación: 28/07/2014
+	 Última modificación: 29/07/2014
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -9,10 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Estadísticas</title>
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estilos.css" />" />
+	
 </head>
 <body>
-	<a href="./"><img alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
+	<a href="./"><img id="botonVolver" alt="Volver" src='<c:url value="/resources/img/home.png" />' width="30" height="30"/></a> <br/><br/>
 
 	Precio medio por inmueble: ${consulta1} <br/>
 	Precio máximo por inmueble: ${consulta2} <br/>

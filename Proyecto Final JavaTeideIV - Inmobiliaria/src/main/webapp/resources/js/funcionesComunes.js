@@ -1,6 +1,6 @@
 /* Autor: Rubén Alejandro Catalán Romero
    Fecha creación: 28/07/2014
-   Última modificación: 28/07/2014
+   Última modificación: 29/07/2014
 */
 
 function listar()
@@ -29,7 +29,9 @@ function buscar(campo, tipoDato)
 		 method: "POST",
 		 contentType: "application/json",
 		 success: mostrarRegistros,
-		 error: mostrarRegistros
+		 error: mostrarRegistros(null)
 		}
 	);
 }
+
+//function eliminarDatosTabla
