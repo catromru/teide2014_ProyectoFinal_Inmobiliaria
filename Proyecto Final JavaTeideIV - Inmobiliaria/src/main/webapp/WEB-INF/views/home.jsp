@@ -13,16 +13,16 @@
 
 <P>  El tiempo en el servidor es ${serverTime}. </P>
 
-<form>
-	Usuario: <input type="text" id="txtLogin" /> <br/>
-	Password: <input type="password" id="pwdLogin" /> <br/>
-	<button onclick="conectar()">Conectar</button>
+<form action="conectar.html" method="get">
+	Usuario: <input type="text" name="txtLogin" id="txtLogin" /> admin <br/>
+	Password: <input type="password" name="pwdLogin" id="pwdLogin" /> 1234 <br/>
+	<input type="submit"></input>
 </form>
 
 <br/>
-<a href="inquilino/listado.html">Inquilinos</a> 
-<a href="propietario/listado.html">Propietarios</a>
-<a href="inmueble/listado.html">Inmuebles</a> <br/>
+<div id="divListado">
+	
+</div>
 
 <a href="estadisticas.html">Estadísticas</a>
 </body>
@@ -30,21 +30,24 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-1.11.1.min.js" />'></script>
 
 <script type="text/javascript">
-	function conectar()
+	(function(){
+		mostrarDiv();
+	})();
+
+	function mostrarDiv()
 	{
-		var usu = $("#txtLogin").val();
-		var pwd = $("#pwdLogin").val();
+		var usu = "<%=request.getAttribute("nombreUsuario") %>";
+		
+		if( usu!=null )
+		{
+			var div = $("#divListado");
+			
+			resultado = '<a href="inquilino/listado.html">Inquilinos</a> '; 
+			resultado += '<a href="propietario/listado.html">Propietarios</a> ';
+			resultado += '<a href="inmueble/listado.html">Inmuebles</a> <br/>';
 
-		var datosJSON = {login:usu, password:pwd};
-		var datosString = JSON.stringify(datosJSON);
-
-		$.ajax(
-			"conectar",
-			{
-				data: datosString,
-				method: "POST",
-				contentType: "application/json",
-		});
+			div.append(resultado);
+		}
 	}
 </script>
 </html>
