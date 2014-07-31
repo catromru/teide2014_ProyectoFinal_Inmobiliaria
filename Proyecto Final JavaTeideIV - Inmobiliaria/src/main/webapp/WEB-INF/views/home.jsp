@@ -16,7 +16,7 @@
 <form action="conectar.html" method="get">
 	Usuario: <input type="text" name="txtLogin" id="txtLogin" /> admin <br/>
 	Password: <input type="password" name="pwdLogin" id="pwdLogin" /> 1234 <br/>
-	<input type="submit"></input>
+	<input type="submit" value="Conectar" />
 </form>
 
 <br/>
